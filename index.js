@@ -10,6 +10,13 @@ client.once(Events.ClientReady, c => {
     console.log(`Ready, logged in as ${c.user.tag}`);
 });
 
+function maxCharacters(message, max) {
+    if (message.length > max) {
+        return message.substring(0,max-1);
+    }
+    return message;
+}
+
 client.on(Events.MessageCreate, msg => {
     if (msg.member.displayName == "RoboTidsear") {
         return;
@@ -34,7 +41,8 @@ client.on(Events.MessageCreate, msg => {
             if (result != undefined) {
                 let outmessage = result.data.choices[0];
                 AddGPTResponseToCache(outmessage.message);
-                let outtext = outmessage.message.content;
+
+                let outtext = maxCharacters(outmessage.message.content, 2000);
                 msg.channel.send(outtext);
             }
         }).catch((err) => {

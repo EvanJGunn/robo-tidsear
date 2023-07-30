@@ -41,7 +41,7 @@ client.on(Events.MessageCreate, msg => {
             if (result != undefined) {
                 let outmessage = result.data.choices[0];
                 AddGPTResponseToCache(outmessage.message);
-                let outtext = maxCharacters(outmessage.message.content, 2000);
+                let outtext = maxCharacters(outmessage.message.content, 1999);
                 msg.channel.send(outtext);
             }
         }).catch((err) => {

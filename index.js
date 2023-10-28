@@ -1,7 +1,6 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { GenerateResponse, AddGPTResponseToCache } from './ai.js';
 
-// Todo never leak it or do any git stuff until I figure out FUCKING JAVASCRIPT >:(
 const discordToken = process.env.DISCORD_TOKEN;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
